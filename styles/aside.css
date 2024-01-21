@@ -1,0 +1,79 @@
+.header nav {
+    width: 230px;
+}
+
+.header .aside{
+    height: 100vh;
+    width: 100%;
+    margin-top: 35px;
+    background-color: #1c1b23;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header .nav{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+    height: 100%;
+    position: sticky;
+    bottom: 0;
+}
+
+.header aside > div{
+    width: 70px;
+}
+
+.header li{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    transition: transform 0.3s,
+}
+
+.header li span{
+    margin-left: 7px;
+}
+
+.header .icon{
+    padding: 4px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.icon a{
+    position: relative;
+    display: inline-block;
+    color: var(--clr-slate400);
+    padding: 5px 5px;
+    margin: 2px 2px;    
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 2px;
+    overflow: hidden;
+    margin-right: 30px;
+    font-family: sans-serif;
+    
+}
+
+.icon a:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 200px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    border-radius: 2px;
+}
+
+.header li > span{
+    margin-top: 4px;
+}
