@@ -135,6 +135,7 @@ a:hover {
     display: flex;
     align-items: center;
     border-radius: 10px;
+    box-shadow: 0 0 120px var(--clr-slate400);
 }
 
 .profile_Photo img{
@@ -189,6 +190,7 @@ a:hover {
     height: 100px;
     background-color: #1c1b23;
     border-radius: 6%;
+    box-shadow: 0 0 5px #AFD275;
 }
 
 .skills_block{
@@ -218,6 +220,8 @@ a:hover {
     height: 15rem;
     margin: 30px;
     background-color: #1c1b23;
+    border-radius: 9px;
+    box-shadow: 0 0 12px var(--clr-slate400);
 }
 
 .More_project_block{
@@ -244,10 +248,38 @@ a:hover {
     flex-direction: column;
     width: 10rem;
     height: 100px;
-    background-color: rgb(32, 153, 209);
+    background-color: white;
     border-radius: 6%;
+    position: relative;
+    overflow: hidden;
 }
 
+
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.image-container img {
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block; /* Remove any default spacing around the image */
+}
+
+
+.Other_cards .heading {
+    position: relative; /* Ensure proper stacking of the heading on top of the image */
+    z-index: 1; /* Ensure the heading appears above the image */
+    background-color: white; /* Add a semi-transparent background for better readability */
+    padding: 10px; /* Adjust padding as needed */
+    color: black;
+    border-radius: 9px;
+    margin: 0;
+}
 
 /* cards css */
 .card{
@@ -256,9 +288,13 @@ a:hover {
     margin: 2px;
     width: 250px;
     height: 150px;
-    border: 3px solid white; /* Optional: Add border for styling */
+    border: 3px solid #4f46e5; /* Optional: Add border for styling */
     border-radius: 8px; /* Optional: Add border-radius for rounded corners */
     overflow: hidden; /* Prevent content overflow */
+    box-shadow: 0 0 5px #4f46e5,
+    0 0 15px #4f46e5,
+    0 0 20px #4f46e5,
+    0 0 00px #4f46e5;
 }
 
 
@@ -280,26 +316,32 @@ a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(253, 254, 255, 0.6); /* Add a semi-transparent background for better readability */
+    background: rgba(253, 254, 255, 0.8); /* Add a semi-transparent background for better readability */
     padding-left: .2rem;
     box-sizing: border-box;
 }
 
 .card-body .btn {
-    padding: 2px;
+    padding: 5px;
     max-width: max-content;
     margin: 0;
     display: inline-block;
     text-decoration: none;
     border-radius: 5px;
     font-size: small;
-    background-color: #a00d1e;
     color: white;
+    background-color: #4f46e5;
 }
 
 .card-body .btn:hover {
-    background-color: #a00d1e;
-    color: white;
+        background: #4f46e5;
+        color: #050801;
+        box-shadow: 0 0 5px #4f46e5,
+            0 0 25px #4f46e5,
+            0 0 50px #4f46e5,
+            0 0 200px #4f46e5;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        border-radius: 2px;
 }
 
 .card-title{
@@ -321,7 +363,7 @@ a:hover {
 }
 
 .blue{
-    border: solid 1px blue;
+    border: solid 1px #5AB9EA;
 }
 
 .red{
