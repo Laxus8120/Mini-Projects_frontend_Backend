@@ -67,3 +67,7 @@
 .header li > span{
     margin-top: 4px;
 }
+
+.cross{
+    display: none;
+}
