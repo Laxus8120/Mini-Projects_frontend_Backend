@@ -16,6 +16,16 @@ class SubTaskService{
             throw error;
         }
     }
+
+    async getAll(task_id){
+        try {
+            const task = await this.subtaskRepository.getAll(task_id);
+            return task;
+        } catch (error) {
+            console.log("not able to get All subtask")
+           throw error; 
+        }
+    }
 }
 
 export default SubTaskService;

@@ -17,6 +17,41 @@ class TaskRepository {
             throw error;
         }
     }
+
+    async getAll(data){
+        try {
+            const task = await Task.find(
+                {
+                   user_id : data.user_id   
+                }
+            ).sort({priority: 1});
+            return task;
+        } catch (error) {
+            console.log("not able to get All task")
+           throw error; 
+        }
+    }
+
+    async destroy(user_id) {
+        try {
+            const result = await Task.findByIdAndDelete(user_id);
+            return result;
+        } catch (error) {
+            console.log("Something went wrong in destroy repo");
+            throw error;
+        }
+    }
+
+
+    async update(id,status) {
+        try {
+            const result = await Task.findByIdAndUpdate(id,{ status: status },{new: true});
+            return result;
+        } catch(error) {
+            console.log("Something went wrong in update repo");
+            throw error;
+        }
+    }
 }
 
 export default TaskRepository;

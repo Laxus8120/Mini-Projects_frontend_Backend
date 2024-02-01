@@ -23,45 +23,26 @@ class UserRepository{
     }
 
 
-    // async destroy(id) {
-    //     try {
-    //         const result = await this.user.findByIdAndDelete(id);
-    //         return result;
-    //     } catch (error) {
-    //         console.log("Something went wrong in crud repo");
-    //         throw error;
-    //     }
-    // }
+    async destroy(id) {
+        try {
+            const result = await this.user.findByIdAndDelete(id);
+            return result;
+        } catch (error) {
+            console.log("Something went wrong in crud repo");
+            throw error;
+        }
+    }
 
-    // async get(id) {
-    //     try {
-    //         const result = await this.user.findById(id);
-    //         return result;
-    //     } catch (error) {
-    //         console.log("Something went wrong in crud repo");
-    //         throw error;
-    //     }
-    // }
 
-    // async getAll() {
-    //     try {
-    //         const result = await this.model.find({});
-    //         return result;
-    //     } catch (error) {
-    //         console.log("Something went wrong in crud repo");
-    //         throw error;
-    //     }
-    // }
-
-    // async update(id, data) {
-    //     try {
-    //         const result = await this.user.findByIdAndUpdate(id, data, {new: true});
-    //         return result;
-    //     } catch(error) {
-    //         console.log("Something went wrong in crud repo");
-    //         throw error;
-    //     }
-    // }
+    async update(id, data) {
+        try {
+            const result = await this.user.findByIdAndUpdate(id, data, {new: true});
+            return result;
+        } catch(error) {
+            console.log("Something went wrong in crud repo");
+            throw error;
+        }
+    }
 
 }
 

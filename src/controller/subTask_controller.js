@@ -24,3 +24,25 @@ export const subTaskCreate  = async (req,res)=>{
         })
     }
 }
+
+
+export const getAllSubTask  = async (req,res)=>{
+    try {
+        const task = await subtask.getAll({
+            task_id : req.body.task_id,            
+        });
+        return res.status(200).json({
+            success : true,
+            message : 'Succesfully fetched all subtask',
+            data : task,
+            err: {}
+        })
+    } catch(error) {
+        return res.status(500).json({
+            success : false,
+            message : ' not able to find subtask ',
+            data : {},
+            err: error
+        })
+    }
+}

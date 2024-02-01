@@ -17,6 +17,20 @@ class SubTaskRepository {
             throw error;
         }
     }
+
+    async getAll(data){
+        try {
+            const task = await subTask.find(
+                {
+                   user_id : data.task_id   
+                }
+            );
+            return task;
+        } catch (error) {
+            console.log("not able to get All subtask")
+           throw error; 
+        }
+    }
 }
 
 export default SubTaskRepository;
