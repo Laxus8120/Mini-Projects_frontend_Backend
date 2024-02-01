@@ -1,8 +1,12 @@
 import express from "express";
 import {authenticate} from "../middleware/authenticate.js"
+
 import { signup, login } from "../controller/user-controller.js";
 
 import{taskCreate} from "../controller/Task_controller.js"
+
+import{subTaskCreate} from "../controller/subTask_controller.js"
+
 
 const router = express.Router();
 
@@ -14,7 +18,9 @@ router.post('/login', login);
 router.post('/task',authenticate,taskCreate)
 
 
+// creation of subTask
 
+router.post('/subTask',subTaskCreate)
 
 
 export default router;

@@ -1,18 +1,23 @@
-const mongoose = require('mongoose');
+import mongoose from  'mongoose';
 
 const subTaskSchema = new mongoose.Schema({
+  user_id: {
+    type: String,
+    ref: 'User',
+    required: true,
+    },
   task_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Task',
     required: true,
+  },
+  sub_Task:{
+    type: String,
+    required: true
   },
   status: {
     type: Number, // 0, 1
     default: 0,
-  },
-  created_at: {
-    type: Date,
-    default: Date.now,
   },
   updated_at: {
     type: Date,
@@ -27,3 +32,4 @@ const subTaskSchema = new mongoose.Schema({
 const SubTask = mongoose.model('SubTask', subTaskSchema);
 
 export default SubTask;
+
