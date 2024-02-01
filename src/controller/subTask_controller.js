@@ -46,3 +46,43 @@ export const getAllSubTask  = async (req,res)=>{
         })
     }
 }
+
+export const updateSubTask  = async (req,res)=>{
+    try {
+        const taskId = req.params.id;
+        const task = await subtask.update(taskId,req.body.status);
+        return res.status(200).json({
+            success : true,
+            message : 'Succesfully update all sub_task',
+            data : task,
+            err: {}
+        })
+    } catch(error) {
+        return res.status(500).json({
+            success : false,
+            message : ' not able to update sub_task ',
+            data : {},
+            err: error
+        })
+    }
+}
+
+export const destroySubTask  = async (req,res)=>{
+    try {
+        const taskId = req.params.id;
+        const task = await taskService.destroy(taskId);
+        return res.status(200).json({
+            success : true,
+            message : 'Succesfully Delete a subtask',
+            data : task,
+            err: {}
+        })
+    } catch(error) {
+        return res.status(500).json({
+            success : false,
+            message : ' not able to delete a subtask ',
+            data : {},
+            err: error
+        })
+    }
+}

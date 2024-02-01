@@ -26,6 +26,26 @@ class SubTaskService{
            throw error; 
         }
     }
+
+    async update(id,status) {
+        try {
+            const result = await this.subtaskRepository.update(id,status);
+            return result;
+        } catch(error) {
+            console.log("Something went wrong in update service layer");
+            throw error;
+        }
+    }
+
+    async destroy(id) {
+        try {
+            const result = await this.subtaskRepository.destroy(id);
+            return result;
+        } catch (error) {
+            console.log("Something went wrong in destroy repo layer");
+            throw error;
+        }
+    }
 }
 
 export default SubTaskService;

@@ -27,10 +27,6 @@ const taskSchema = new mongoose.Schema({
     type: String, // "TODO", "IN_PROGRESS", "DONE"
     default: "TODO",
   },
-  updated_at: {
-    type: Date,
-    default: null,
-  }
 },{timestamps : true});
 
 const Task = mongoose.model('Task', taskSchema);

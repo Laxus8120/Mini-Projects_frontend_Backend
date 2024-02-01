@@ -32,12 +32,12 @@ class TaskRepository {
         }
     }
 
-    async destroy(user_id) {
+    async destroy(id) {
         try {
-            const result = await Task.findByIdAndDelete(user_id);
+            const result = await Task.findByIdAndDelete(id);
             return result;
         } catch (error) {
-            console.log("Something went wrong in destroy repo");
+            console.log("Something went wrong in destroy repo layer");
             throw error;
         }
     }

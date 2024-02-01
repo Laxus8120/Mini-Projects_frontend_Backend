@@ -3,9 +3,9 @@ import {authenticate} from "../middleware/authenticate.js"
 
 import { signup, login } from "../controller/user-controller.js";
 
-import{taskCreate,getAll,update} from "../controller/Task_controller.js"
+import{taskCreate,getAll,update,destroy} from "../controller/Task_controller.js"
 
-import{subTaskCreate,getAllSubTask} from "../controller/subTask_controller.js"
+import{subTaskCreate,getAllSubTask,updateSubTask,destroySubTask} from "../controller/subTask_controller.js"
 
 
 const router = express.Router();
@@ -16,15 +16,15 @@ router.post('/login', login);
 
 // Now, using middleware authenticate we check if the user have valid JWt token or NOT 
 router.post('/task',authenticate,taskCreate);
-router.get('/getAll',getAll);
+router.get('/getAll',authenticate,getAll);
 router.patch('/update/:id',update);
-
-
+router.delete('/delete/:id',destroy);
 
 // creation of subTask
 
 router.post('/subTask',authenticate,subTaskCreate);
-router.get('/getAll',getAllSubTask);
-
+router.get('/getAllsubTask',authenticate,getAllSubTask);
+router.patch('/updateSubTask/:id',updateSubTask);
+router.delete('/deleteSubTask/:id',destroySubTask);
 
 export default router;

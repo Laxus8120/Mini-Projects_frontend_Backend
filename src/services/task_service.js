@@ -27,12 +27,12 @@ class TaskService{
         }
     }
 
-    async destroy(user_id) {
+    async destroy(id) {
         try {
-            const result = await this.taskRepository.destroy(user_id);
+            const result = await this.taskRepository.destroy(id);
             return result;
         } catch (error) {
-            console.log("Something went wrong in destroy repo");
+            console.log("Something went wrong in destroy repo layer");
             throw error;
         }
     }
@@ -43,7 +43,7 @@ class TaskService{
             const result = await this.taskRepository.update(id,status);
             return result;
         } catch(error) {
-            console.log("Something went wrong in update repo");
+            console.log("Something went wrong in update service layer ");
             throw error;
         }
     }

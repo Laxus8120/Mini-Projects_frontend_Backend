@@ -19,10 +19,6 @@ const subTaskSchema = new mongoose.Schema({
     type: Number, // 0, 1
     default: 0,
   },
-  updated_at: {
-    type: Date,
-    default: null,
-  },
   deleted_at: {
     type: Date,
     default: null,

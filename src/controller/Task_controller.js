@@ -70,17 +70,18 @@ export const update  = async (req,res)=>{
 
 export const destroy  = async (req,res)=>{
     try {
-        const task = await taskService.destroy(req.body);
+        const taskId = req.params.id;
+        const task = await taskService.destroy(taskId);
         return res.status(200).json({
             success : true,
-            message : 'Succesfully destroy  task',
+            message : 'Succesfully Delete a task',
             data : task,
             err: {}
         })
     } catch(error) {
         return res.status(500).json({
             success : false,
-            message : ' not able to delete task ',
+            message : ' not able to delete a task ',
             data : {},
             err: error
         })
