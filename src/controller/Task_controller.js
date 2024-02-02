@@ -9,7 +9,8 @@ export const taskCreate  = async (req,res)=>{
             description: req.body.description,
             priority: req.body.priority,
             status : req.body.status,
-            user_id : req.body.user_id,            
+            user_id : req.body.user_id, 
+            due_date: req.body.due_date           
         });
         return res.status(201).json({
             success : true,
@@ -51,7 +52,7 @@ export const getAll  = async (req,res)=>{
 export const update  = async (req,res)=>{
     try {
         const taskId = req.params.id;
-        const task = await taskService.update(taskId,req.body.status);
+        const task = await taskService.update(taskId,req.body);
         return res.status(200).json({
             success : true,
             message : 'Succesfully update all task',

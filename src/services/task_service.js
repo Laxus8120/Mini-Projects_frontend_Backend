@@ -38,9 +38,9 @@ class TaskService{
     }
 
 
-    async update(id,status) {
+    async update(id,data) {
         try {
-            const result = await this.taskRepository.update(id,status);
+            const result = await this.taskRepository.update(id,data);
             return result;
         } catch(error) {
             console.log("Something went wrong in update service layer ");

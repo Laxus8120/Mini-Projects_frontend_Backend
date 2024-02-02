@@ -17,7 +17,7 @@ const taskSchema = new mongoose.Schema({
   },
   due_date: {
     type: Date,
-    default: 0,
+    default: Date.now,
   },
   priority: {
     type: Number, // 0, 1, 2

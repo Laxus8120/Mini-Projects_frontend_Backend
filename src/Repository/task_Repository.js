@@ -20,11 +20,7 @@ class TaskRepository {
 
     async getAll(data){
         try {
-            const task = await Task.find(
-                {
-                   user_id : data.user_id   
-                }
-            ).sort({priority: 1});
+            const task = await Task.find().sort({priority: 1});
             return task;
         } catch (error) {
             console.log("not able to get All task")
@@ -43,9 +39,9 @@ class TaskRepository {
     }
 
 
-    async update(id,status) {
+    async update(id,data) {
         try {
-            const result = await Task.findByIdAndUpdate(id,{ status: status },{new: true});
+            const result = await Task.findByIdAndUpdate(id,{ status: data.status, due_date: data.due_date, priority: data.priority },{new: true});
             return result;
         } catch(error) {
             console.log("Something went wrong in update repo");
