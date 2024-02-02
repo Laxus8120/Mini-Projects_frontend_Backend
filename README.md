@@ -51,76 +51,88 @@ This project is a `Task Management System API` that allows users to manage their
 
 * Create Task
 
-`localhost:${PORT}/api/createTask`   
+`localhost:${PORT}/api/taskCreate`   
 
-    Input: Title, description, due_date<br>
+    Input: Title, description, due_date
     Endpoint: POST 
 <hr>
 
 * Create Subtask
 
-`localhost:${PORT}/api/createSubtask`
+`localhost:${PORT}/api/subTaskCreate`
 
-    Input: task_id<br>
+    Input: task_id
     http req: POST 
 
 <hr>
 
 * Get All User Tasks
 
-`localhost:${PORT}/api/getAllUserTasks` 
+`localhost:${PORT}/api/getAll` 
 
     Filters: Priority, due date, pagination
-    Input: user<br>
-    Endpoint: POST 
+    Input: user
+    Endpoint: GET  
+<hr>
+
+* Get All User Subtasks
+
+`localhost:${PORT}/api/getAllsubTask`
+   
+    Input: task_id 
+    Endpoint: GET 
+<hr>
+
+* Update Task
+
+`localhost:${PORT}/api//update/:id`
+   
+    Input: due_date, status ("TODO" or "DONE")
+    Endpoint: PATCH 
+<hr>
+
+* Update Subtask
+
+`localhost:${PORT}/api/updateSubTask/:id`
+   
+    Input: status (0 or 1)
+    Endpoint: PATCH 
+<hr>
+
+* Delete Task (Soft Deletion)
+
+`localhost:${PORT}/api/delete/:id`
+
+    Endpoint: DELETE 
 <hr>
 
 * Create Task
 
-`localhost:${PORT}/api/createTask
-`   
-    Input: Title, description, due_date<br>
-    Endpoint: POST 
+`localhost:${PORT}/api/deleteSubTask/:id`
+   
+    Endpoint: DELETE 
 <hr>
 
-* Create Task
+>Cron Job: Priority Update
 
-`localhost:${PORT}/api/createTask
-`   
-    Input: Title, description, due_date<br>
-    Endpoint: POST 
-<hr>
+    Logic: Changes task priority based on due_date
+    Schedule: Runs periodically
 
-* Create Task
+# Environment Variables
 
-`localhost:${PORT}/api/createTask
-`   
-    Input: Title, description, due_date<br>
-    Endpoint: POST 
-<hr>
+>Ensure the following environment variable is set:
 
-* Create Task
+    DB_CONNECTION_STRING: MongoDB connection string
 
-`localhost:${PORT}/api/createTask
-`   
-    Input: Title, description, due_date<br>
-    Endpoint: POST 
-<hr>
+## Scripts
 
-* Create Task
+```js
+"scripts": {
+  "start": "npx nodemon src/index.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+```
 
-`localhost:${PORT}/api/createTask
-`   
-    Input: Title, description, due_date<br>
-    Endpoint: POST 
-<hr>
+# Contributing
 
-<!-- Cron Job: Priority Update
-
-<!-- Logic: Changes task priority based on due_date
-Schedule: Runs periodically
-Cron Job: Voice Calling (Twilio)
-
-Logic: Calls users for overdue tasks based on priority
-Schedule: Runs periodically
-Note: Priority is fetched from the user table -->
+* Provide guidelines for other developers who want to contribute to your project.

@@ -15,8 +15,8 @@ router.post('/signup',signup);
 router.post('/login', login);
 
 // Now, using middleware authenticate we check if the user have valid JWt token or NOT 
-router.post('/task',taskCreate);
-router.get('/getAll',getAll);
+router.post('/task',authenticate,taskCreate);
+router.get('/getAll',authenticate,getAll);
 router.patch('/update/:id',update);
 router.delete('/delete/:id',destroy);
 
