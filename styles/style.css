@@ -72,3 +72,9 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--clr-rose);
   outline: 1px solid var(--clr-rose);
 }
+
+.description a{
+  font-size: 9px;
+  text-transform:none;
+  color: white;
+}
