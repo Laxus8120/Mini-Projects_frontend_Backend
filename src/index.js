@@ -5,6 +5,7 @@ console.log('welcome to todo app')
 let todoDataList = document.getElementById('todo-data-list');
 let saveButton = document.getElementById('save-todo');
 let todoInputBar = document.getElementById('todo-input-bar');
+let todoWeight = document.getElementById("todo-input-weight");
 let todos = [];
 let deleteTodo = document.getElementById("todoDelete");
 let getPendingTodosButton = document.getElementById("get-todos");
@@ -19,7 +20,8 @@ getPendingTodosButton.addEventListener("click",() => {
 todoInputBar.addEventListener('keyup',function toggleSaveButton(){
 
     let todoText = todoInputBar.value;
-    if(todoText.length == 0){
+    let weightText = todoWeight.value;
+    if(todoText.length == 0 && weightText.length == 0){
         if(saveButton.classList.contains('disabled')) return;
         saveButton.classList.add('disabled');
     }
@@ -37,8 +39,9 @@ function reRenderTodos(){
 
 saveButton.addEventListener('click',()=>{
     let todoText = todoInputBar.value;
-    if(todoText.length == 0) return;
-    let todo = { text: todoText, status: "In Progress", finishButtonText : "Finished"}
+    let weightText = todoWeight.value;
+    if(todoText.length == 0 && weightText.length ==0) return;
+    let todo = { text: todoText, status: "In Progress", finishButtonText : "Finished", weight : weightText}
     todos.push(todo);
     addTodo(todo,todos.length);
     todoInputBar.value =''
@@ -103,6 +106,19 @@ function addTodo(todo,todoNumber){
     let todoItem = document.createElement('div');
     let todoNo = document.createElement('div');
     let todoDetail = document.createElement('div');
+    let todoWeight = document.createElement('div');
+
+    let noOfSets = document.createElement('div');
+    let todoReps_1 = document.createElement('input');
+    let setsInputLablel_1 = document.createElement('label');
+
+    let todoReps_2 = document.createElement('input');
+    let setsInputLablel_2 = document.createElement('label');
+
+    let todoReps_3 = document.createElement('input');
+    let setsInputLablel_3 = document.createElement('label');
+
+
     let todoStatus = document.createElement('div');
     let todoAction = document.createElement('div');
     let DeleteButton = document.createElement('button');
@@ -113,6 +129,12 @@ function addTodo(todo,todoNumber){
 
     todoNo.textContent = `${todoNumber}.`;
     todoDetail.textContent = todo.text;
+    todoWeight.textContent = todo.weight;
+    
+    setsInputLablel_1.textContent = '12';
+    setsInputLablel_2.textContent = '12';
+    setsInputLablel_3.textContent = '12';
+
     todoStatus.textContent = todo.status;
     DeleteButton.textContent = 'Delete';
     finshedButton.textContent= todo.finishButtonText;
@@ -124,6 +146,17 @@ function addTodo(todo,todoNumber){
     todoItem.classList.add("todo-item", "d-flex", "flex-row", "justify-content-between", "align-items-center")
     todoNo.classList.add('todo-no');
     todoDetail.classList.add("todo-detail", "text-muted");
+    todoWeight.classList.add('todo-weight',"text-muted")
+    
+    noOfSets.classList.add('todo-set',"btn-group","gap-1");
+    todoReps_1.classList.add('todo-set',"btn-check");
+    setsInputLablel_1.classList.add("btn" ,"btn-outline-primary");
+    todoReps_2.classList.add('todo-set',"btn-check");
+    setsInputLablel_2.classList.add("btn" ,"btn-outline-primary");
+    todoReps_3.classList.add('todo-set',"btn-check");
+    setsInputLablel_3.classList.add("btn" ,"btn-outline-primary");
+
+
     todoStatus.classList.add("todo-status", "text-muted");
     todoAction.classList.add("todo-actions", "d-flex", "gap-3");
     DeleteButton.classList.add("btn", "btn-danger","delete-todo");
@@ -138,11 +171,33 @@ function addTodo(todo,todoNumber){
     todoDetail.setAttribute('todo-idx',todoNumber -1);
     hiddenInput.setAttribute('todo-idx',todoNumber -1);
 
+    todoReps_1.setAttribute("type",'checkbox');
+    setsInputLablel_1.setAttribute("for",'btncheck1');
+    todoReps_1.setAttribute("id",'btncheck1');
+
+    todoReps_2.setAttribute("type",'checkbox');
+    setsInputLablel_2.setAttribute("for",'btncheck2');
+    todoReps_2.setAttribute("id",'btncheck2');
+
+    todoReps_3.setAttribute("type",'checkbox');
+    setsInputLablel_3.setAttribute("for",'btncheck3');
+    todoReps_3.setAttribute("id",'btncheck3');
+
     // On click event listner
     DeleteButton.onclick = removeTodo;
     finshedButton.onclick = finshedTodo;
     editButton.onclick = editTodo;
     hiddenInput.onkeypress = saveEditedTodos;
+
+
+    noOfSets.appendChild(todoReps_1);
+    noOfSets.appendChild(setsInputLablel_1);
+
+    noOfSets.appendChild(todoReps_2);
+    noOfSets.appendChild(setsInputLablel_2);
+
+    noOfSets.appendChild(todoReps_3);
+    noOfSets.appendChild(setsInputLablel_3);
 
     todoAction.appendChild(DeleteButton);
     todoAction.appendChild(finshedButton);
@@ -150,7 +205,9 @@ function addTodo(todo,todoNumber){
 
     todoItem.appendChild(todoNo);
     todoItem.appendChild(todoDetail);
+    todoItem.appendChild(todoWeight);
     todoItem.appendChild(hiddenInput);
+    todoItem.appendChild(noOfSets);
     todoItem.appendChild(todoStatus);
     todoItem.appendChild(todoAction);
 

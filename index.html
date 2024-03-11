@@ -21,8 +21,9 @@
     <section>
         <div class="row m-3">
             <div class="input-section d-flex flex-row justify-content-center gap-3">
-                <div class="todo-input" style=" flex-basis: 60%">
-                    <input type="text" id="todo-input-bar" class="form-control" placeholder="Write another Exercise ..">
+                <div class="todo-input" style=" flex-basis: 60%; display: flex; gap: 20px;">
+                    <input type="text" id="todo-input-bar" class="form-control" placeholder="Write another Exercise .." style="flex:5;">
+                    <input type="number" name="" id="todo-input-weight" class="form-control" placeholder="Max weight (Kg).." style="flex: 1;">
                 </div>
                 <div class="save-todo btn btn-primary disabled" id="save-todo">
                     Save
@@ -41,6 +42,8 @@
             <div class="list-todo-heading d-flex flex-row justify-content-between">
                 <div class="todo-no">No.</div>
                 <div class="todo-detail">Exercise</div>
+                <div class="todo-weight">Weight</div>
+                <div class="todo-set">Sets</div>
                 <div class="todo-status">Status</div>
                 <div class="todo-actions">Actions</div>
             </div>
