@@ -16,7 +16,7 @@
 /* 2xl */
 /* @media (min-width: 1536px) {} */
 
-.btn {
+/* .btn {
     display: inline-block;
     font-weight: 600;
     text-decoration: none;
@@ -29,20 +29,20 @@
       0 6px 6px rgba(225, 29, 72, 0.5), 0 0 100px -10px var(--clr-rose);
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  
-  .btn:hover {
+   */
+  /* .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 14px 28px rgba(225, 29, 72, 0.25),
       0 10px 10px rgba(225, 29, 72, 0.22), 0 0 120px -10px var(--clr-rose);
   }
-  
-  .container {
+   */
+  /* .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-  }
+  } */
 
   /* xs */
   @media (min-width: 475px) {

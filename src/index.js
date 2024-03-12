@@ -1,4 +1,4 @@
-// import '../style/modern_normalize.css'
+import '../style/modern_normalize.css'
 import '../style/style.css'
 console.log('welcome to todo app')
 
