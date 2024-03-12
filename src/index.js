@@ -1,4 +1,4 @@
-import '../style/modern_normalize.css'
+// import '../style/modern_normalize.css'
 import '../style/style.css'
 console.log('welcome to todo app')
 
@@ -9,6 +9,7 @@ let todoWeight = document.getElementById("todo-input-weight");
 let todos = [];
 let deleteTodo = document.getElementById("todoDelete");
 let getPendingTodosButton = document.getElementById("get-todos");
+let todoReps = document.getElementById('todo-reps');
 
 
 
@@ -17,7 +18,7 @@ getPendingTodosButton.addEventListener("click",() => {
     reRenderTodos();
 })
 
-todoInputBar.addEventListener('keyup',function toggleSaveButton(){
+todoWeight.addEventListener('keyup',function toggleSaveButton(){
 
     let todoText = todoInputBar.value;
     let weightText = todoWeight.value;
@@ -40,11 +41,14 @@ function reRenderTodos(){
 saveButton.addEventListener('click',()=>{
     let todoText = todoInputBar.value;
     let weightText = todoWeight.value;
+    let repsText  = todoReps.value;
     if(todoText.length == 0 && weightText.length ==0) return;
-    let todo = { text: todoText, status: "In Progress", finishButtonText : "Finished", weight : weightText}
+    let todo = { text: todoText, status: "In Progress", finishButtonText : "Finished", weight : weightText, reps: repsText}
     todos.push(todo);
     addTodo(todo,todos.length);
-    todoInputBar.value =''
+    todoInputBar.value ='';
+    todoWeight.value = '';
+    todoReps.value = '';
 })
 
 function finshedTodo(event){
@@ -131,9 +135,9 @@ function addTodo(todo,todoNumber){
     todoDetail.textContent = todo.text;
     todoWeight.textContent = todo.weight;
     
-    setsInputLablel_1.textContent = '12';
-    setsInputLablel_2.textContent = '12';
-    setsInputLablel_3.textContent = '12';
+    setsInputLablel_2.textContent = todo.reps;
+    setsInputLablel_3.textContent = todo.reps;
+    setsInputLablel_1.textContent = todo.reps;
 
     todoStatus.textContent = todo.status;
     DeleteButton.textContent = 'Delete';
@@ -205,8 +209,8 @@ function addTodo(todo,todoNumber){
 
     todoItem.appendChild(todoNo);
     todoItem.appendChild(todoDetail);
-    todoItem.appendChild(todoWeight);
     todoItem.appendChild(hiddenInput);
+    todoItem.appendChild(todoWeight);
     todoItem.appendChild(noOfSets);
     todoItem.appendChild(todoStatus);
     todoItem.appendChild(todoAction);
