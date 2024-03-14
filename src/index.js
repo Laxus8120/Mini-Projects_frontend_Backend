@@ -10,8 +10,18 @@ let todos = [];
 let deleteTodo = document.getElementById("todoDelete");
 let getPendingTodosButton = document.getElementById("get-todos");
 let todoReps = document.getElementById('todo-reps');
+let todoSet = document.getElementById('todoSet');
 
-
+function removeClassOnScreenResize() {
+    window.addEventListener('resize', function() {
+        var todoSet = document.getElementById('todoSet');
+        if (window.innerWidth <= 450) {
+            todoSet.classList.remove('btn-group');
+        } else {
+            todoSet.classList.add('btn-group');
+        }
+    });
+}
 
 getPendingTodosButton.addEventListener("click",() => {
     todos = todos.filter((todo)=> todo.status != "Finished");
@@ -49,6 +59,7 @@ saveButton.addEventListener('click',()=>{
     todoInputBar.value ='';
     todoWeight.value = '';
     todoReps.value = '';
+    removeClassOnScreenResize();
 })
 
 function finshedTodo(event){
@@ -70,6 +81,7 @@ function finshedTodo(event){
         return -1;
     })
     reRenderTodos();
+    removeClassOnScreenResize();
 }
 
 function removeTodo(event){
@@ -150,7 +162,7 @@ function addTodo(todo,todoNumber){
     todoItem.classList.add("todo-item", "d-flex", "flex-row", "justify-content-between", "align-items-center")
     todoNo.classList.add('todo-no');
     todoDetail.classList.add("todo-detail", "text-muted");
-    todoWeight.classList.add('todo-weight',"text-muted")
+    todoWeight.classList.add('todo-weight')
     
     noOfSets.classList.add('todo-set',"btn-group","gap-1");
     todoReps_1.classList.add('todo-set',"btn-check");
@@ -174,18 +186,24 @@ function addTodo(todo,todoNumber){
     editButton.setAttribute("todo-idx",todoNumber -1);
     todoDetail.setAttribute('todo-idx',todoNumber -1);
     hiddenInput.setAttribute('todo-idx',todoNumber -1);
+    noOfSets.setAttribute('id','todoSet');
 
     todoReps_1.setAttribute("type",'checkbox');
-    setsInputLablel_1.setAttribute("for",'btncheck1');
-    todoReps_1.setAttribute("id",'btncheck1');
+    todoReps_1.setAttribute("id",`btncheck1-${todoNumber -1}`);
+    setsInputLablel_1.setAttribute("for",`btncheck1-${todoNumber -1}`);
+ 
 
     todoReps_2.setAttribute("type",'checkbox');
-    setsInputLablel_2.setAttribute("for",'btncheck2');
-    todoReps_2.setAttribute("id",'btncheck2');
+    todoReps_2.setAttribute("id",`btncheck2-${todoNumber -1}`);
+    setsInputLablel_2.setAttribute("for",`btncheck2-${todoNumber -1}`);
+
+
 
     todoReps_3.setAttribute("type",'checkbox');
-    setsInputLablel_3.setAttribute("for",'btncheck3');
-    todoReps_3.setAttribute("id",'btncheck3');
+    todoReps_3.setAttribute("id",`btncheck3-${todoNumber -1}`);
+    setsInputLablel_3.setAttribute("for",`btncheck3-${todoNumber -1}`);
+
+
 
     // On click event listner
     DeleteButton.onclick = removeTodo;
