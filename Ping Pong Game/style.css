@@ -1,0 +1,32 @@
+body{
+    box-sizing: border-box;
+}
+
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+#pong_table{
+    border: solid black 1px;
+    width: 700px;
+    height: 400px;
+    display: flex;
+    position: relative;
+}
+
+#paddle{
+    background-color: blue;
+    width: 20px;
+    height: 50px;
+    position:absolute;
+    top: 10px;
+}
+
+#ball{
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    
+}
