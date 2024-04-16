@@ -1,28 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
-
-    async function fetchProducts() {
-        const response = await axios.get("https://fakestoreapi.com/products");
-        return response.data;
-    }
-
-    async function fetchProductsByCategory(category) {
-        const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
-        return response.data;
-    }
-
-    async function fetchCategories() {
-        // this function is marked async so this will also return a promise
-        const response = await fetch("https://fakestoreapi.com/products/categories");
-        const data = await response.json();
-        return data;
-    }
-    
-    const downloadedProducts = await fetchProducts();
-
     const search = document.getElementById('searchBar');
 
     async function searchBar(event){
-        
+
+
         let input = event.target;
         if(event.key === 'Enter'){
             event.preventDefault();
@@ -32,14 +13,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
 
             const productList = document.getElementById("productList");
-            productList.innerHTML = '';
-            Loader();
-            const product = await fetchProductsByCategory(input.value);
-            await populateProducts(false, product)
-            .then(() => {
-                removeLoader();
-            });
+            // productList.innerHTML = '';
+            console.log(productList)
+
+            if(productList){
+                console.log(productList)
+
+                const productList = document.getElementById("productList");
+                productList.innerHTML = '';
+                Loader();
+                const product = await fetchProductsByCategory(input.value);
+                await populateProducts(false, product)
+                .then(() => {
+                    removeLoader();
+                });
+            }
         }
+        window.location.href = 'productList.html';
     }
     search.addEventListener('keydown', searchBar);
 
@@ -86,43 +76,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         });
     }
-
-    async function populateCategories() {
-        const categories = await fetchCategories();
-        const categoryList = document.getElementById("categoryList");
-        categories.forEach(category => {
-            const categoryLink = document.createElement("a");
-            categoryLink.classList.add("d-flex", "text-decoration-none");
-            categoryLink.textContent = category;
-            categoryLink.href = `productList.html?category=${category}`;
-
-            categoryList.appendChild(categoryLink);
-        })
-    }
-
-    async function downloadContentAndPopulate () {
-        Promise.all([populateProducts(false), populateCategories()])
-        .then(() => {
-            removeLoader();
-        });
-    }
-    downloadContentAndPopulate();
-
-
-    const filterSearch = document.getElementById("search");
-    filterSearch.addEventListener("click", async () => {
-        const productList = document.getElementById("productList");
-        const minPrice = Number(document.getElementById("minPrice").value);
-        const maxPrice = Number(document.getElementById("maxPrice").value);
-        const products = downloadedProducts;
-        filteredProducts = products.filter(product =>  product.price >= minPrice && product.price <= maxPrice);
-        productList.innerHTML = "";
-        populateProducts(true, filteredProducts);
-    });
-
-    const resetFilter = document.getElementById("clear");
-    resetFilter.addEventListener("click", () => {
-        window.location.reload();
-    })
-
-});
+})

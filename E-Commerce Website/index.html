@@ -30,7 +30,7 @@
                         <div class="logo d-inline-block">
                             <a href="index.html" class="text-decoration-none" style="font-weight: bold;">Wish Cart</a>
                         </div>
-                        <div class="search" style="width: 55%;">
+                        <div class="search" style="width: 55%;" id="searchBar">
                             <form class="form-inline">
                               <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
                             </form>        
@@ -48,9 +48,7 @@
         <!-- heading -->
         <h2 class="home-title text-center">Welcome to Wish Cart</h2>
         <!-- corusel -->
-        <div class="conatiner">
-            <div class="row">
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel" style="z-index: -1; margin: 0px 90px 9px 90px;">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
                         <img src="img/crousel1.webp" class="d-block w-100" alt="...">
@@ -70,22 +68,16 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
-                  </div>
-            </div>
-        </div>
+                </div>
         <div class="b-example-divider " style="height: 1rem;"></div>
         <!-- main content -->
         <div class="container">
             <div class="row">
                 <div class="category-list d-flex flex-row justify-content-between align-items-center" id="categoryList">
                     <!-- List of categories -->
-                    
                     <div class="category-item d-flex align-items-center justify-content-center">
                         <a href="productList.html">All products</a>
                     </div>
-
-                    
-
                 </div>
                 <div class="category-title text-center">
                     Select a category to start Shopping
@@ -97,10 +89,11 @@
     </div>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
     <script src="js/common.js"></script>
-    <script src="js/index.js"></script>    
+    <script src="js/index.js"></script>
+    <!-- <script src="js/search.js"></script>     -->
 </body>
 </html>
